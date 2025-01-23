@@ -1,4 +1,4 @@
-package samsung;
+package challenges.stringPlay;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,11 +17,8 @@ public class StringPlay {
 	}
 
 	private static void eachElementCount(String[] arr) {
-
 		Map<String, Long> m;
-
 		m=Arrays.stream(arr).collect(Collectors.groupingBy(x->x,Collectors.counting()));
-
 		System.out.println(m);
 	}
 
@@ -53,11 +50,8 @@ public class StringPlay {
 	}
 
 	private static void printDuplicateElement(String[] arr) {
-		
 		Set<String> set = new HashSet<>();
-		
 		List<String> li = Arrays.stream(arr).filter(x->!set.add(x)).collect(Collectors.toList());
-		
 		System.out.println(li);
 	}
 	
