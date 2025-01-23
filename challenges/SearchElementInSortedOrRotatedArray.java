@@ -15,7 +15,8 @@ public class SearchElementInSortedOrRotatedArray {
             int n = arr.length, pivot, lo = 0, hi = n-1;
 
             while (lo < hi) {
-                if (arr[lo] <= arr[hi]) pivot = lo;
+                if (arr[lo] <= arr[hi]) 
+                   pivot = lo;
                 int mid = (lo + hi) / 2;
                 if (arr[mid] > arr[hi])
                     lo = mid + 1;
