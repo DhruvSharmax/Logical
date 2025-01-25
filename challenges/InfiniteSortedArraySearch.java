@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class InfiniteSortedArraySearch {
 	public static void main(String[] args) {
 		int arr[]= {3, 5, 7, 9, 10, 90,
-                100, 130, 140, 160, 170}, key=171;
+                100, 130, 140, 160, 170}, key=170;
 		
 		int pos = findPosition(arr,key);
 		System.out.println(pos);

@@ -1,4 +1,4 @@
-package challenges;
+package challenges.threadPlay;
 
 public class ThreadSequence {
 

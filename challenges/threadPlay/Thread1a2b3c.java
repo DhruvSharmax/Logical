@@ -1,4 +1,4 @@
-package challenges;
+package challenges.threadPlay;
 
 public class Thread1a2b3c {
     static final Object lock = new Object();

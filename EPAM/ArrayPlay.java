@@ -3,20 +3,20 @@ package EPAM;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class Main {
+public class ArrayPlay {
 	static int sum = 0;
 	public static void main(String[] args) {
 		List<Integer> list = Arrays.asList(2,3,4,3,4,10,20,2,4,1);
 		List<Integer> list1 = Arrays.asList(2,3,4,5,7,-1);
-		Main m = new Main();
-		//m.countOccurances(list);
+		ArrayPlay m = new ArrayPlay();
+		m.countOccurances(list);
 		
-		//m.findPairs(list1,10);
+		m.findPairs(list1,10);
 		m.finPairsOptimized(list1, 6);
 		
-		//System.out.println(m.calculateSum(list,list1));
-		//System.out.println(m.calculateSumStream(list,list1));
-		//System.out.println(m.calculateSumThread(list,list1));
+		System.out.println(m.calculateSum(list,list1));
+		System.out.println(m.calculateSumStream(list,list1));
+		System.out.println(m.calculateSumThread(list,list1));
 	}
 	
 	public int calculateSum(List<Integer>... list) {
@@ -41,7 +41,7 @@ public class Main {
 		for(List<Integer> li:list) {
 			ex.submit(()->{
 				for(int i:li) 
-					synchronized(Main.class) {
+					synchronized(ArrayPlay.class) {
 						sum+=i;
 					}
 			});

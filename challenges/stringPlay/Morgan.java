@@ -1,4 +1,4 @@
-package challenges;
+package challenges.stringPlay;
 
 public class Morgan {
 	public static void main(String[] args) {

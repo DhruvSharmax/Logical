@@ -1,4 +1,4 @@
-package ThreadSeqesnce;
+package challenges.threadPlay.ThreadSeqesnce;
 
 public class ThreadRunningInSequence {
 

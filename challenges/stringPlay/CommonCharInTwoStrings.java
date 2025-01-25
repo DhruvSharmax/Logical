@@ -1,11 +1,10 @@
-package challenges;
+package challenges.stringPlay;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class TwoStrings {
+public class CommonCharInTwoStrings {
 	public static void main(String[] args) {
 		System.out.println(checkSubStringBruteForce("and","art"));
 		

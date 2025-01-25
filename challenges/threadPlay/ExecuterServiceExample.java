@@ -1,4 +1,4 @@
-package challenges;
+package challenges.threadPlay;
 
 import java.util.Random;
 import java.util.concurrent.Callable;

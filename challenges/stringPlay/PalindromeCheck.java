@@ -1,4 +1,4 @@
-package challenges;
+package challenges.stringPlay;
 
 public class PalindromeCheck {
 	public static void main(String[] args) {

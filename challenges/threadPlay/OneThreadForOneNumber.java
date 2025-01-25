@@ -1,4 +1,4 @@
-package challenges;
+package challenges.threadPlay;
 /*
 print 1,11,21,31 using thread 1
       2,22,32,42 using thread 2
