@@ -3,7 +3,7 @@ package challenges.stringPlay;
 /*
  * https://www.geeksforgeeks.org/power-set/
  */
-public class AllSubSubStrings {
+public class AllPermutationsOfString {
 	static String s = "abc";
 	static int count=0;
 	public static void main(String[] args) {
