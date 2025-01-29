@@ -12,7 +12,7 @@ public class AllCombinationsAddUpToSum {
     }
 
     private static void findCombinations(int target, int statIndex) {
-        if(target==0 && output.size()>1){
+        if(target==0){
             System.out.println(output);
             return;
         }
