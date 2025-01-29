@@ -16,7 +16,7 @@ public class TripletsWithGivenSum {
 			while(j<k) {
 				int currSum = input[i]+input[j]+input[k];
 				if(currSum==sum) {
-					System.out.printf("%d %d %d \n",input[i],input[j],input[k]);
+					System.out.println(input[i]+","+input[j]+","+input[k]);
 					j++;
 					k--;
 				} else if(currSum<sum) j++;

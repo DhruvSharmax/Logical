@@ -15,24 +15,13 @@ public class TwoSum {
         }
         return new int[] {-1,-1};
     }
-   
-   public static void convertBruteForceToStream(int[] arr, int sum) {
-	  Arrays.stream(arr)
-	   .mapToObj(i->Arrays.stream(arr)
-	   .mapToObj(k->new int[] {k,i}))
-	   .flatMap(l->l)
-	   .filter(m->(Arrays.stream(m).sum()==sum))
-		.collect(Collectors.toList()).stream().forEach(n->System.out.println(Arrays.toString(n)));
-   }
     
     private static int[] findTwoSumGetElements(int[] arr, int sum) {
         List<Integer> li = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++) {
-            int compliment = sum - arr[i];
-            if (li.contains(compliment)) {
-                return new int[] { compliment, arr[i] };
-            }
-                li.add(arr[i]);
+        for (int element : arr) {
+            if (li.contains(sum-element))
+                return new int[] { (sum-element), element };
+            li.add(element);
         }
         return new int[] {-1,-1};
     }
@@ -51,14 +40,11 @@ public class TwoSum {
     }
 
     public static void main(String[] args) {
-    	int[] list = new int[] { 1, 4, 1, 4, 4, 1 };
-        int[] indices = findTwoSumGetElements(list, 8);
-        
+    	int[] list = new int[] { 3, 4, 1, 6, 4, 1 };
+        int[] indices = findTwoSumGetElements(list, 9);
         System.out.println(indices[0] + " " + indices[1]);
         
         indices=findTwoSumGetIndex(list,8);
         System.out.println(indices[0] + " " + indices[1]);
-        
-        convertBruteForceToStream(list,8);
     }
 }

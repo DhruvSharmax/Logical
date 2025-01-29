@@ -1,37 +1,8 @@
 package challenges.threadPlay;
 
 // Java Program to demonstrate Process Synchronization
-class BankAccount {
-    private int balance
-            = 1000; // Shared resource (bank balance)
 
-    // Synchronized method for deposit operation
-    public synchronized void deposit(int amount)
-    {
-        balance += amount;
-        System.out.println("Deposited: " + amount
-                + ", Balance: " + balance);
-    }
-
-    // Synchronized method for withdrawal operation
-    public synchronized void withdraw(int amount)
-    {
-        if (balance >= amount) {
-            balance -= amount;
-            System.out.println("Withdrawn: " + amount
-                    + ", Balance: " + balance);
-        }
-        else {
-            System.out.println(
-                    "Insufficient balance to withdraw: "
-                            + amount);
-        }
-    }
-
-    public int getBalance() { return balance; }
-}
-
-public class BankAccountTransaction {
+public class BankingSystem {
     public static void main(String[] args)
     {
         BankAccount account
@@ -63,8 +34,7 @@ public class BankAccountTransaction {
                 }
             }
         });
-
-        // Start both threads
+        System.out.println("Initial Balance: "+ account.getBalance());
         t1.start();
         t2.start();
 
@@ -76,9 +46,29 @@ public class BankAccountTransaction {
         catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        // Print final balance
-        System.out.println("Final Balance: "
-                + account.getBalance());
+        System.out.println("Final Balance: "+ account.getBalance());
     }
+}
+class BankAccount {
+    private int balance
+            = 1000; // Shared resource (bank balance)
+
+    // Synchronized method for deposit operation
+    public synchronized void deposit(int amount)
+    {
+        balance += amount;
+        System.out.println("Deposited: " + amount + ", Balance: " + balance);
+    }
+
+    // Synchronized method for withdrawal operation
+    public synchronized void withdraw(int amount)
+    {
+        if (balance >= amount) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount + ", Balance: " + balance);
+        }
+        else System.out.println("Insufficient balance to withdraw: "+ amount);
+    }
+
+    public int getBalance() { return balance; }
 }
