@@ -10,33 +10,22 @@ public class ArrayProblems {
 	
 	public static void main(String[] args) {
 		int[] arr = {0,0,1,1,1,2,2,3,3,4};
+		int n = arr.length;
 		
-		System.out.println(getUniqueElementsLength(Arrays.copyOf(arr, arr.length)));
-		
-		int n = 2;
-		System.out.println(getLengthAfterRemovalStreams(Arrays.copyOf(arr, arr.length),n));
-		
-		System.out.println(Arrays.toString(getArrayAfterRemoval(Arrays.copyOf(arr, arr.length),n)));
-		
-		System.out.println(getLengthAfterRemoval(Arrays.copyOf(arr, arr.length),n));
-		
-		convertArrayToListToArrayStreams(Arrays.copyOf(arr, arr.length));
-		
-		System.out.println(
-				Arrays.toString(
-						findFirstAndLastPositionInSortedArray(
-								Arrays.copyOf(arr, arr.length),1
-								)
-						)
-				);
-		
-		System.out.println(
-				Arrays.toString(
-						findFirstAndLastPositionInSortedArrayBinarySearch(
-								Arrays.copyOf(arr, arr.length),1
-								)
-						)
-				);
+		System.out.println("getUniqueElementsLength "+getUniqueElementsLength(Arrays.copyOf(arr, n)));
+		System.out.println("findFirstAndLastPositionInSortedArray "
+				+Arrays.toString(findFirstAndLastPositionInSortedArray(Arrays.copyOf(arr, n),1)));
+		System.out.println("findFirstAndLastPositionInSortedArrayBinarySearch "+
+				Arrays.toString(findFirstAndLastPositionInSortedArrayBinarySearch(Arrays.copyOf(arr, n),1)));
+
+		int n1 = 2;
+		System.out.println("getLengthAfterRemoval "
+				+getLengthAfterRemoval(Arrays.copyOf(arr, n),n1));
+		System.out.println("getArrayAfterRemoval "
+				+Arrays.toString(getArrayAfterRemoval(Arrays.copyOf(arr, n),n1)));
+		convertArrayToListToArrayStreams(Arrays.copyOf(arr, n));
+		System.out.println("getLengthAfterRemovalStreams "
+				+getLengthAfterRemovalStreams(Arrays.copyOf(arr, n),n1));
 	}
 
 	private static int getUniqueElementsLength(int[] arr) {
@@ -47,8 +36,9 @@ public class ArrayProblems {
 		int count=1;
 		int prev = arr[0];
 		for(int i:arr) {
-			if(prev!=i)
+			if(prev!=i) {
 				count++;
+			}
 			prev = i;
 		}
 		return count;
@@ -57,8 +47,9 @@ public class ArrayProblems {
 		int start = -1,end = -1;
 		for(int i=0;i<arr.length;i++) {
 			if(arr[i]==n) {
-				if(start==-1)
+				if(start==-1) {
 					start = i;
+				}
 				end = i;
 			}
 		}
@@ -70,31 +61,30 @@ public class ArrayProblems {
 		int low=0, high=arr.length-1;
 		int start = -1, end = -1;
 		
-		while(high>=low) {
+		while(high>=low) {				// loop to get first occurrence of n
 			int mid = (high+low)/2;
-			if(arr[mid]<n)
+			if(n>arr[mid])
 				low = mid+1;
-			else if(arr[mid]>n)
+			else if(n<arr[mid])
 				high = mid-1;
 			else {
 				start=mid;
-				high = mid-1;
+				high = mid-1;			// doing mid-1 coz were reducing high index of array so we keep moving left side
 			}
 		}
-		
+
 		low=0;high=arr.length-1;
-		while(high>=low) {
+		while(high>=low) {				// loop to get last occurrence of n
 			int mid = (high+low)/2;
-			if(arr[mid]<n)
+			if(n>arr[mid])
 				low = mid+1;
-			else if(arr[mid]>n)
+			else if(n<arr[mid])
 				high = mid-1;
 			else {
 				end=mid;
-				low = mid+1;
+				low = mid+1;			// doing mid+1 coz were increasing low index of array so we keep moving right side
 			}
 		}
-		
 		return new int[] {start,end};
 	}
 
@@ -102,18 +92,19 @@ public class ArrayProblems {
 
 	private static int getLengthAfterRemoval(int[] arr, int n) {
 		int count=0;
-		for(int i=0;i<arr.length;i++)
-			if(arr[i]!=n)
+		for(int i=0;i<arr.length;i++) {
+			if (arr[i] != n)
 				count++;
+		}
 		return count;
 	}
 
 	private static int[] getArrayAfterRemoval(int[] arr, int n) {
 		int count=0;
-		for(int i=0;i<arr.length;i++)
-			if(arr[i]!=n)
+		for(int i=0;i<arr.length;i++) {
+			if (arr[i] != n)
 				arr[count++] = arr[i];
-		
+		}
 		return Arrays.copyOf(arr, count);
 	}
 
@@ -121,13 +112,14 @@ public class ArrayProblems {
 		List<Integer> li = Arrays.stream(arr).boxed().collect(Collectors.toList());
 		
 		int[] out = li.stream().mapToInt(Integer::intValue).toArray();
-		
+
+		System.out.print("convertArrayToListToArrayStreams ");
 		Arrays.stream(out).forEach(System.out::print);
 		System.out.println("\n");
 	}
 
-	private static int getLengthAfterRemovalStreams(int[] arr, int n) {
-		return Arrays.stream(arr).filter(x->x!=n).toArray().length;
+	private static long getLengthAfterRemovalStreams(int[] arr, int n) {
+		return Arrays.stream(arr).filter(x->x!=n).count();
 	}
 
 
