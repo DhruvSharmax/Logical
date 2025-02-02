@@ -1,15 +1,10 @@
 package StandardStructures;
+
 import java.util.Arrays;
-import java.util.Random;
 
 public class QuickSortAlgo {
 	public static void main(String[] args) {
-		Random rand = new Random();
-		int[] arr = new int[10];
-		for (int i = 0; i < arr.length; i++)
-			arr[i] = rand.nextInt(100);
-
-		System.out.println("before sort:" + Arrays.toString(arr));
+		int[] arr = {5,8,3,0,10,9,1,4};
 		quickSort(arr,0,arr.length-1);
 		System.out.println("After sort:" + Arrays.toString(arr));
 	}
@@ -35,10 +30,9 @@ public class QuickSortAlgo {
 		return i+1;
 	}
 
-	private static void swap(int[] arr, int element1, int element2) {
-		int temp = arr[element2];
-		arr[element2] = arr[element1];
-		arr[element1] = temp;
-
+	private static void swap(int[] arr, int i, int j) {
+		int temp = arr[j];
+		arr[j] = arr[i];
+		arr[i] = temp;
 	}
 }

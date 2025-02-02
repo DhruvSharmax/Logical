@@ -1,57 +1,43 @@
 package StandardStructures;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class MergeSort {
 	public static void main(String[] args) {
-		Random rand = new Random();
-		int[] arr = new int[10];
-		for (int i = 0; i < arr.length; i++)
-			arr[i] = rand.nextInt(100);
-
-		System.out.println("before sort:" + Arrays.toString(arr));
-		myMergeSort(arr);
+        int[] arr = {5,8,3,0,10,9,1,4};
+		divide(arr);
 		System.out.println("After sort:" + Arrays.toString(arr));
 	}
 
-	private static void myMergeSort(int[] arr) {
-		int inputSize = arr.length;
+	static void divide(int[] arr) {
+		int n = arr.length;
+		if(n>1) {
+			int midIndex = n / 2;
+			int[] leftArr = new int[midIndex];
+			int[] rightArr = new int[n - midIndex];
 
-		if(inputSize<2) return;
-		
-		int midIndex = inputSize/2;
-		int[] leftArr = new int[midIndex];
-		int[] rightArr = new int[inputSize-midIndex];
-		
-		for(int i=0;i<midIndex;i++)
-			leftArr[i] = arr[i];
-		
-		for(int i=midIndex;i<inputSize;i++)
-			rightArr[i-midIndex] = arr[i];
-		
-		myMergeSort(leftArr);
-		myMergeSort(rightArr);
-		
-		merge(arr,leftArr,rightArr);
+			for (int i = 0; i < midIndex; i++)
+				leftArr[i] = arr[i];
+			for (int i = midIndex; i < n; i++)
+				rightArr[i - midIndex] = arr[i];            // line to remember
+
+			divide(leftArr);
+			divide(rightArr);
+
+			merge(arr, leftArr, rightArr);
+		}
 	}
 
-	private static void merge(int[] arr, int[] leftArr, int[] rightArr) {
-		int leftSize = leftArr.length;
-		int rightSize = rightArr.length;
-
+	static void merge(int[] arr, int[] leftArr, int[] rightArr) {
 		int i=0,j=0,k=0;
+		while(i<leftArr.length && j<rightArr.length)
+			arr[k++] = leftArr[i]<=rightArr[j] ?		// condition to remember <=
+				leftArr[i++] :
+				rightArr[j++];
 
-		while(i<leftSize && j<rightSize) {
-			if(leftArr[i]<=rightArr[j])
-				arr[k++] = leftArr[i++];
-			else
-				arr[k++] = rightArr[j++];
-		}
-
-		while(i<leftSize)
+		while(i<leftArr.length)
 			arr[k++] = leftArr[i++];
-		while(j<rightSize)
+		while(j<rightArr.length)
 			arr[k++] = rightArr[j++];
 	}
 }
