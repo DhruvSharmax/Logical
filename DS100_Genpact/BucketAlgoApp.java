@@ -39,8 +39,7 @@ class LeakyBucket implements RateLimiter {
     @Override
     public boolean isAcessible() {
         if(queue.remainingCapacity()>0) {
-            queue.add(1);
-            return true;
+            return queue.add(1);
         }
         else return false;
     }
