@@ -78,7 +78,7 @@ public class ListOperations {
 		}
 	}
 	
-	public void finPairsOptimized(List<Integer> list1,int sum) {
+	public void finPairsOptimized(List<Integer> list1,int sum) {		// using prefix sum
 		List<Integer> li = new ArrayList<>();
 		for(int i:list1) {
 			if(li.contains(sum-i))
@@ -86,5 +86,6 @@ public class ListOperations {
 
 			li.add(i);
 		}
+		System.out.println(li);
 	}
 }
