@@ -15,7 +15,7 @@ public class AllSubstringsCount {
 	 */
 	private static Integer countSubsequences(String s) {
 		int levelCount = 0, allCount = 0;
-		Map<Character, Integer> map = new HashMap<Character, Integer>();
+		Map<Character, Integer> map = new HashMap<>();
 
 		for (Character c : s.toCharArray()) {
 			levelCount = allCount + 1;

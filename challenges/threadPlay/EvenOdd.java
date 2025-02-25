@@ -39,11 +39,7 @@ public class EvenOdd {
 
 		public static void main(String[] args) {
 			EvenOdd eo = new EvenOdd();
-			
-			Thread t1 = new Thread(()->eo.printEven());
-			Thread t2 = new Thread(()->eo.printOdd());
-			
-		t1.start();
-		t2.start();
+			new Thread(eo::printEven).start();
+			new Thread(eo::printOdd).start();
 	}
 }

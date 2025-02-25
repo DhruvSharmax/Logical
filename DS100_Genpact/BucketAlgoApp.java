@@ -15,20 +15,8 @@ public class BucketAlgoApp {
     }
 }
 
-class User {
-    int id;
-    Map<Integer, LeakyBucket> bucket;
-    User(int id) {
-        this.id=id;
-        bucket = new HashMap<>();
-        bucket.put(this.id, new LeakyBucket(10));
-    }
-
-    public void accessApp() {
-        if(bucket.get(id).isAcessible())
-            System.out.println(Thread.currentThread().getName()+"-> access granted");
-        else System.out.println(Thread.currentThread().getName()+"-> access threshold reached");
-    }
+interface RateLimiter {
+    boolean isAcessible();
 }
 
 class LeakyBucket implements RateLimiter {
@@ -45,6 +33,19 @@ class LeakyBucket implements RateLimiter {
     }
 }
 
-interface RateLimiter {
-    boolean isAcessible();
+class User {
+    int id;
+    Map<Integer, LeakyBucket> bucket;       // bucket per user
+    User(int id) {
+        this.id=id;
+        bucket = new HashMap<>();           // maintain buckets of all users
+        bucket.put(this.id, new LeakyBucket(10));
+    }
+
+    public void accessApp() {
+        if(bucket.get(id).isAcessible())
+            System.out.println(Thread.currentThread().getName()+"-> access granted");
+        else System.out.println(Thread.currentThread().getName()+"-> access threshold reached");
+    }
 }
+

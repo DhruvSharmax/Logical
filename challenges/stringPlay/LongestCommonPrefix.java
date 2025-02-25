@@ -10,9 +10,9 @@ public class LongestCommonPrefix {
 
 	private static String getPrefix(String[] s) {
 		Arrays.sort(s);
-		int lastIndex = s.length-1;
 		int i=0;
-		for(;i<s[lastIndex].length() && s[0].charAt(i)==s[lastIndex].charAt(i);i++) continue;
+		int lastIndex = s.length-1;
+		for(;i<s[lastIndex].length() && s[0].charAt(i)==s[lastIndex].charAt(i);i++) {}
 		
 		return s[0].substring(0,i);
 	}

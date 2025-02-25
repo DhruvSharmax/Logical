@@ -12,17 +12,13 @@ public class Anagrams {
 	private static boolean isAnagram(String s1,String s2) {
 		if(s1.length()!=s2.length()) return false;
 		
-		char[] c = new char[256];
+		char[] arr = new char[256];
+		for(char i:s1.toCharArray())
+			arr[i]++;
+		for(char i: s2.toCharArray())
+			arr[i]--;
 		
-		char[] s1_a = s1.toCharArray();
-		char[] s2_a = s2.toCharArray();
-		
-		for(int i = 0; i<s1.length();i++) {
-			c[s1_a[i]]++;
-			c[s2_a[i]]--;
-		}
-		
-		for(char i:c)
+		for(char i:arr)
 			if(i!=0) return false;
 		
 		return true;

@@ -17,32 +17,11 @@ public class LongestSubstringWithoutRepeatingChar {
 	
 public static void main(String[] args) {
 		
-		String s = "abcabcbb";
-		
+		String s = "dhruvsharma";
 		//System.out.println(getSubStringByList(s));
 		//System.out.println(findSubStringByString(s));
 		System.out.println(getSubStringBySlidingWindow(s));
 		System.out.println(getSubStringByBruteForce(s));
-	}
-	
-	@Test
-	public void givenString_whengetSubStringByBruteForceCalled_thenResultFoundAsExpected() {
-	    assertEquals("", getSubStringByBruteForce(""));
-	    assertEquals("A", getSubStringByBruteForce("A"));
-	    assertEquals("ABCDEF", getSubStringByBruteForce("AABCDEF"));
-	    assertEquals("ABCDEF", getSubStringByBruteForce("ABCDEFF"));
-	    assertEquals("NGISAWE", getSubStringByBruteForce("CODINGISAWESOME"));
-	    assertEquals("be coding", getSubStringByBruteForce("always be coding"));
-	}
-	
-	@Test
-	public void givenString_whengetSubStringBySlidingWindowCalled_thenResultFoundAsExpected1() {
-	    assertEquals("", getSubStringBySlidingWindow(""));
-	    assertEquals("A", getSubStringBySlidingWindow("A"));
-	    assertEquals("ABCDEF", getSubStringBySlidingWindow("AABCDEF"));
-	    assertEquals("ABCDEF", getSubStringBySlidingWindow("ABCDEFF"));
-	    assertEquals("NGISAWE", getSubStringBySlidingWindow("CODINGISAWESOME"));
-	    assertEquals("be coding", getSubStringBySlidingWindow("always be coding"));
 	}
 	
 	public static String getSubStringByBruteForce(String s) {
@@ -78,5 +57,25 @@ public static void main(String[] args) {
 	    }
 	    
 	    return output;
+	}
+
+	@Test
+	public void givenString_whengetSubStringByBruteForceCalled_thenResultFoundAsExpected() {
+		assertEquals("", getSubStringByBruteForce(""));
+		assertEquals("A", getSubStringByBruteForce("A"));
+		assertEquals("ABCDEF", getSubStringByBruteForce("AABCDEF"));
+		assertEquals("ABCDEF", getSubStringByBruteForce("ABCDEFF"));
+		assertEquals("NGISAWE", getSubStringByBruteForce("CODINGISAWESOME"));
+		assertEquals("be coding", getSubStringByBruteForce("always be coding"));
+	}
+
+	@Test
+	public void givenString_whengetSubStringBySlidingWindowCalled_thenResultFoundAsExpected1() {
+		assertEquals("", getSubStringBySlidingWindow(""));
+		assertEquals("A", getSubStringBySlidingWindow("A"));
+		assertEquals("ABCDEF", getSubStringBySlidingWindow("AABCDEF"));
+		assertEquals("ABCDEF", getSubStringBySlidingWindow("ABCDEFF"));
+		assertEquals("NGISAWE", getSubStringBySlidingWindow("CODINGISAWESOME"));
+		assertEquals("be coding", getSubStringBySlidingWindow("always be coding"));
 	}
 }
