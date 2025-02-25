@@ -5,6 +5,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TwoSum {
+
+    public static void main(String[] args) {
+        int[] list = new int[] { 3, 4, 1, 6, 4, 1 };
+        int[] indices = findTwoSumGetElements(list, 9);
+        System.out.println(indices[0] + " " + indices[1]);
+
+        indices=findTwoSumGetIndex(list,8);
+        System.out.println(indices[0] + " " + indices[1]);
+    }
+
    public static int[] findTwoSumBruteForce(int[] list, int sum) {
         for(int i=0;i<list.length;i++) {
             for(int j=i+1;j<list.length;j++) {
@@ -37,14 +47,5 @@ public class TwoSum {
     		li.add(i);
     	}
     	return new int[] {-1,-1};
-    }
-
-    public static void main(String[] args) {
-    	int[] list = new int[] { 3, 4, 1, 6, 4, 1 };
-        int[] indices = findTwoSumGetElements(list, 9);
-        System.out.println(indices[0] + " " + indices[1]);
-        
-        indices=findTwoSumGetIndex(list,8);
-        System.out.println(indices[0] + " " + indices[1]);
     }
 }

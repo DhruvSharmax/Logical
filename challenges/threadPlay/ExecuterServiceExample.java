@@ -9,24 +9,21 @@ import java.util.concurrent.Future;
 
 public class ExecuterServiceExample {
 	public static void main(String[] args) {
-		ExecutorService executer = Executors.newCachedThreadPool();
+		ExecutorService executor = Executors.newCachedThreadPool();
 		Random r = new Random();
-		Callable<Integer> c = ()->
+		Future<Integer> f = executor.submit(()->
 		{
-				int sleeptime = r.nextInt(2000);
-				System.out.println("starting...");
-				Thread.sleep(sleeptime);
-				System.out.println("finished...");
-				return sleeptime;
-		};
-		
-		Future<Integer> f = executer.submit(c);
+			int sleeptime = r.nextInt(2000);
+			System.out.println("starting...");
+			Thread.sleep(sleeptime);
+			System.out.println("finished...");
+			return sleeptime;
+		});
+
 		try {
 			System.out.println(""+f.get());
-		} catch (InterruptedException | ExecutionException e) {
-			e.printStackTrace();
-		}
+		} catch (InterruptedException | ExecutionException _) {}
 		
-		executer.shutdown();
+		executor.shutdown();
 	}
 }

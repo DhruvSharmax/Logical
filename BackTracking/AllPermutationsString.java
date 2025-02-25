@@ -4,24 +4,22 @@ package BackTracking;
  */
 public class AllPermutationsString {
 	public static void main(String[] args) {
-		printPermutaions("abc");
+		printPermutaions("abcd");
 	}
 
 	private static void printPermutaions(String s) {
-		int l = 0, r = s.length()-1;
-		recursive(s,l,r);
+		recursive(s,0);
 	}
 
-	private static void recursive(String s, int l, int r) {
-		if(l==r) {
+	private static void recursive(String s, int index) {
+		if(index==s.length()) {
 			System.out.println(s);
 			return;
 		}
-		
-		for(int i = l; i <= r; i++) {
-			s = swap(s,l,i);
-			recursive(s, l+1, r);
-			s = swap(s,l,i);
+		for(int i = index; i < s.length(); i++) {
+			s = swap(s,index,i);
+			recursive(s, index+1);
+			s = swap(s,index,i);		// backtracking - to restore the original string
 		}
 	}
 

@@ -8,45 +8,47 @@ public class StringPlay {
 	public static void main(String[] args) {
 		String[] arr = {"AA", "AA","BB", "CC","DD"};
 		
-		eachElementCount(arr);		// with Stream API
-		eachElementCountWithFrequency(arr);
-		eachElementCountWithFrequency("AAAABBCCDD");
+		eachElementWithStreamCounting(arr);		// with Stream API
+		eachElementWithStreamCounting("AAAABBCCDD");
+		eachElementCountWithFrequencyMethod(arr);
 		readNewsPaperToFindMaxFrequencyWord("sample news to prove that sample being used multiple sample places.");
 		printDuplicateElement(arr);
 		printUnique(arr);
 	}
 
-	private static void eachElementCount(String[] arr) {
-		Map<String, Long> m;
-		m=Arrays.stream(arr).collect(Collectors.groupingBy(x->x,Collectors.counting()));
+	private static void eachElementWithStreamCounting(String[] arr) {
+		Map<String, Long> m = Arrays.stream(arr)
+				.collect(Collectors
+						.groupingBy(x->x,Collectors.counting()));
+		System.out.println(m);
+	}
+	private  static void eachElementWithStreamCounting(String s) {
+		var m = s.chars()
+				.mapToObj(c -> (char) c)
+				.collect(Collectors
+						.groupingBy(x->x,Collectors.counting()));
 		System.out.println(m);
 	}
 
-	private static void eachElementCountWithFrequency(String[] arr) {
+	private static void eachElementCountWithFrequencyMethod(String[] arr) {
 		List<String> li = Arrays.asList(arr);
 		Set<String> set = new HashSet<>();
 		set.addAll(li);
-		set.stream().forEach(x->System.out.print(x+"="+Collections.frequency(li, x)+","));
-		System.out.println("");
-	}
-
-	private  static void eachElementCountWithFrequency(String s) {
-		s.chars()
-				.mapToObj(c -> Character.valueOf((char) c))
+		var m = set.stream()
 				.collect(Collectors
-						.groupingBy(x->x,Collectors.counting()))
-				.forEach((k, v) -> System.out.println(k + "=" + v));
+						.toMap(x->x, x->Collections.frequency(li, x)));
+		System.out.println(m);
 	}
 
 	//time comp: n+m where n is length of string and m in number of words
 	// space com: m
 	private static void readNewsPaperToFindMaxFrequencyWord(String str) {
 		var list = Arrays.asList(str.split(" "));
-		var op = list.stream()
+		var maxCountedWord = list.stream()
 				.collect(Collectors.groupingBy(x->x,Collectors.counting()))
 				.entrySet().stream()
 				.max(Map.Entry.comparingByValue()).get();
-		System.out.println(op);
+		System.out.println(maxCountedWord.getKey()+ " appeared "+maxCountedWord.getValue()+" times");
 	}
 
 	private static void printDuplicateElement(String[] arr) {

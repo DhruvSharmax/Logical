@@ -3,9 +3,9 @@ package challenges;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LRUCacheUsingJavaLinkedList<K,V> extends LinkedHashMap {
+public class LRUCacheUsingJavaLinkedHashMap<K,V> extends LinkedHashMap {
     int capacity;
-    LRUCacheUsingJavaLinkedList(int capacity) {
+    LRUCacheUsingJavaLinkedHashMap(int capacity) {
         super(capacity, .75f, true);
         this.capacity=capacity;
     }
@@ -16,7 +16,7 @@ public class LRUCacheUsingJavaLinkedList<K,V> extends LinkedHashMap {
     }
 
     public static void main(String[] args) {
-        LRUCacheUsingJavaLinkedList<Integer, Integer> cache = new LRUCacheUsingJavaLinkedList<>(2);
+        LRUCacheUsingJavaLinkedHashMap<Integer, Integer> cache = new LRUCacheUsingJavaLinkedHashMap<>(2);
 
         cache.put(1, "D");
         cache.put(2, "V");

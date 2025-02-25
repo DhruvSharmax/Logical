@@ -17,7 +17,7 @@ public class LongestSubstringWithoutRepeatingChar {
 	
 public static void main(String[] args) {
 		
-		String s = "dhruvsharma";
+		String s = "CODINGISAWIESOME";
 		//System.out.println(getSubStringByList(s));
 		//System.out.println(findSubStringByString(s));
 		System.out.println(getSubStringBySlidingWindow(s));
@@ -41,21 +41,19 @@ public static void main(String[] args) {
 		return output;
 	}
 	
-	public static String getSubStringBySlidingWindow(String str) {
+	public static String getSubStringBySlidingWindow(String s) {
 	    String output = "";
-	    Map<Character,Integer> m = new HashMap<>();
-	    
-	    for(int start=0, end = 0; end<str.length(); end++) {
-	    	Character c = str.charAt(end);
-	    	if(m.containsKey(c))
-	    		start = Math.max(m.get(c)+1, start);
-	    	
-	    	if(output.length()<end-start+1)
-	    		output = str.substring(start,end+1);
-	    	
-	    	m.put(c, end);
+	    Map<Character,Integer> map = new HashMap<>();
+	    int start = 0;
+	    for(int i = 0; i<s.length(); i++) {
+	    	Character c = s.charAt(i);
+	    	if(map.containsKey(c))
+	    		start = Math.max(map.get(c)+1, start);
+	    	if(output.length()<i+1-start)
+	    		output = s.substring(start,i+1);
+
+	    	map.put(c, i);
 	    }
-	    
 	    return output;
 	}
 

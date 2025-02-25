@@ -44,7 +44,7 @@ public class ArrayProblems {
 		return count;
 	}
 	private static int[] findFirstAndLastPositionInSortedArray(int[] arr, int n) {
-		int start = -1,end = -1;
+		int start = -1,end = start;
 		for(int i=0;i<arr.length;i++) {
 			if(arr[i]==n) {
 				if(start==-1) {
@@ -59,7 +59,7 @@ public class ArrayProblems {
 	private static int[] findFirstAndLastPositionInSortedArrayBinarySearch(int[] arr, int n) {
 
 		int low=0, high=arr.length-1;
-		int start = -1, end = -1;
+		int start = -1, end = start;
 		
 		while(high>=low) {				// loop to get first occurrence of n
 			int mid = (high+low)/2;
@@ -69,7 +69,7 @@ public class ArrayProblems {
 				high = mid-1;
 			else {
 				start=mid;
-				high = mid-1;			// doing mid-1 coz were reducing high index of array so we keep moving left side
+				high = mid-1;			// doing mid-1 coz we're reducing high index of array so we keep moving left side
 			}
 		}
 
@@ -82,7 +82,7 @@ public class ArrayProblems {
 				high = mid-1;
 			else {
 				end=mid;
-				low = mid+1;			// doing mid+1 coz were increasing low index of array so we keep moving right side
+				low = mid+1;			// doing mid+1 coz we're increasing low index of array so we keep moving right side
 			}
 		}
 		return new int[] {start,end};

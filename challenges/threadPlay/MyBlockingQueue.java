@@ -13,16 +13,12 @@ public class MyBlockingQueue {
 		Thread t1 = new Thread(()->{
 			try {
 				q.producer();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			} catch (InterruptedException _) {}
 		});
 		Thread t2 = new Thread(()->{
 			try {
 				q.consumer();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			} catch (InterruptedException _) {}
 		});
 		
 		t1.setDaemon(true);
@@ -33,9 +29,7 @@ public class MyBlockingQueue {
 		
 		try {
 			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		} catch (InterruptedException _) {}
 	}
 
 	private synchronized void producer() throws InterruptedException {

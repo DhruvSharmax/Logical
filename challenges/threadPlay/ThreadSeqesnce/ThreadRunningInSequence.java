@@ -1,6 +1,9 @@
 package challenges.threadPlay.ThreadSeqesnce;
 
 public class ThreadRunningInSequence {
+	static class ResourceLock{
+		public volatile int flag = 1;
+	}
 
 	public static void main(String[] args) {
 
@@ -11,7 +14,7 @@ public class ThreadRunningInSequence {
 		 * in this example we made variable value such that our first thread while loop condition get false and it will always be executed first due to this.
 		 */
 		
-		ResourceLock lock = new ResourceLock();
+		var lock = new ThreadRunningInSequence.ResourceLock();
 
 		Thread a = new Thread(() -> {
 			try {
@@ -25,7 +28,7 @@ public class ThreadRunningInSequence {
 						lock.flag = 2;
 						lock.notifyAll();
 				}
-			} catch (Exception e) {}
+			} catch (Exception _) {}
 		});
 		
 		Thread b = new Thread(() -> {
@@ -40,7 +43,7 @@ public class ThreadRunningInSequence {
 						lock.flag = 3;
 						lock.notifyAll();
 				}
-			} catch (Exception e) {}
+			} catch (Exception _) {}
 		});
 		
 		Thread c = new Thread(() -> {
@@ -55,7 +58,7 @@ public class ThreadRunningInSequence {
 						lock.flag = 1;
 						lock.notifyAll();
 				}
-			} catch (Exception e) {}
+			} catch (Exception _) {}
 		});
 
 		a.start();

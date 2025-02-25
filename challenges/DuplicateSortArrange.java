@@ -1,9 +1,6 @@
 package challenges;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,10 +14,10 @@ public class DuplicateSortArrange {
 	
 	public static void oneGo(Integer[] arr) {
 		Set<Integer> s = Arrays.stream(arr).collect(Collectors.toSet());
-		s=s.stream().sorted().collect(Collectors.toSet());
+		s=s.stream().sorted().collect(Collectors.toCollection(LinkedHashSet::new));
 		Integer[] minusone = new Integer[arr.length-s.size()];
 		Arrays.fill(minusone, -1);
-		List li = new ArrayList(Arrays.asList(minusone));
+		List<Integer> li = new ArrayList<>(Arrays.asList(minusone));
 		li.addAll(0, s);
 		System.out.println(li);
 	}

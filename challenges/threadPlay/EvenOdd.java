@@ -11,9 +11,7 @@ public class EvenOdd {
 				while (counter % 2 != 0) {
 					try {
 						wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					} catch (InterruptedException _) {}
 				}
 				System.out.print(counter+++" ");
 				notify();
@@ -27,9 +25,7 @@ public class EvenOdd {
 				while (counter % 2 == 0) {
 					try {
 						wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					} catch (InterruptedException _) {}
 				}
 				System.out.print(counter+++" ");
 				notify();
