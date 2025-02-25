@@ -2,7 +2,7 @@ package Cvent;
 
 public class PrintPrimes {
 	public static void main(String[] args) {
-		int num = 10000;
+		int num = 100;
 		printPrimes(num);
 		//IntStream.range(2, num).forEach(i->IntStream.range(2, i/2).filter(j->i%j==0).forEach(System.out::print));
 	}
