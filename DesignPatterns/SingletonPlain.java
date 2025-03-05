@@ -1,4 +1,4 @@
-package StandardStructures;
+package DesignPatterns;
 
 public class SingletonPlain {
 	private static SingletonPlain obj;

@@ -1,4 +1,4 @@
-package MementoPattern;
+package DesignPatterns.MementoPattern;
 
 public class Editor {
 	private String content;

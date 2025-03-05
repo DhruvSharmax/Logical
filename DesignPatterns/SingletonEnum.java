@@ -1,4 +1,4 @@
-package StandardPatterns;
+package DesignPatterns;
 public class SingletonEnum {
 	public static void main(String[] args) {
 		System.out.println(SingletonDemo.INSTANCE.getInstance() == SingletonDemo.INSTANCE.getInstance());
