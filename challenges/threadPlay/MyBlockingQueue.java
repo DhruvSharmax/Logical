@@ -3,6 +3,9 @@ package challenges.threadPlay;
 import java.util.*;
 
 public class MyBlockingQueue {
+	/*
+	just remember 2 methods of linkedList add() and removeFirst()
+	 */
 	
 	LinkedList<Integer> li = new LinkedList<>();
 	int LIMIT = 10;
@@ -20,19 +23,19 @@ public class MyBlockingQueue {
 				q.consumer();
 			} catch (InterruptedException _) {}
 		});
-		
+
 		t1.setDaemon(true);
 		t2.setDaemon(true);
 		
 		t1.start();
 		t2.start();
-		
+
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(20);				// will run main till 20ms giving producers consumers time to execute
 		} catch (InterruptedException _) {}
 	}
 
-	private synchronized void producer() throws InterruptedException {
+	synchronized void producer() throws InterruptedException {
 		while(true) {
 			while(li.size()==LIMIT) wait();
 			li.add(rand.nextInt(10));
@@ -40,7 +43,7 @@ public class MyBlockingQueue {
 		}
 	}
 	
-	private synchronized void consumer() throws InterruptedException {
+	synchronized void consumer() throws InterruptedException {
 		while(true) {
 			while(li.size()==0) wait();
 			System.out.println("item consumed: "+li.removeFirst()+ " List size: "+li.size());

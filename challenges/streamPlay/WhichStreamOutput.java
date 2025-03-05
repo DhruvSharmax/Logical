@@ -1,4 +1,4 @@
-package UdemyJavaFundamentalsTest;
+package challenges.streamPlay;
 import java.util.stream.Stream;
 
 public class WhichStreamOutput {
