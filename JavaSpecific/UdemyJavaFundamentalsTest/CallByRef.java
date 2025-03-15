@@ -1,4 +1,4 @@
-package LessImportant;
+package JavaSpecific.UdemyJavaFundamentalsTest;
 import java.util.*;
 
 public class CallByRef {
@@ -13,7 +13,6 @@ public class CallByRef {
 	
 	class inner {
 		public void modified(List<String> li) {
-			System.out.println(li);
 			li.add("Naina");
 		}
 	}

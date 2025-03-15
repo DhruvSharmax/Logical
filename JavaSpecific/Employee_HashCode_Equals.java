@@ -1,8 +1,8 @@
-package EPAM;
+package JavaSpecific;
 
 import java.util.*;
 
-public class Employee {
+public class Employee_HashCode_Equals {
 
 	@Override
 	public String toString() {
@@ -13,7 +13,7 @@ public class Employee {
 	Integer empId;
 	Integer salary;
 
-	public Employee(String name, Integer empId, Integer salary) {
+	public Employee_HashCode_Equals(String name, Integer empId, Integer salary) {
 		super();
 		this.name = name;
 		this.empId = empId;
@@ -45,13 +45,13 @@ public class Employee {
 	}
 
 	public static void main(String[] args) {
-		Employee emp1 = new Employee("Rohit", 10, 100);
-		Employee emp2 = new Employee("Rahul", 20, 100);
-		Employee emp3 = new Employee("Rahul", 30, 50);
-		Employee emp4 = new Employee("Rohit", 10, 100);
-		List<Employee> empList = Arrays.asList(emp1, emp2, emp3, emp4);
+		Employee_HashCode_Equals emp1 = new Employee_HashCode_Equals("Rohit", 10, 100);
+		Employee_HashCode_Equals emp2 = new Employee_HashCode_Equals("Rahul", 20, 100);
+		Employee_HashCode_Equals emp3 = new Employee_HashCode_Equals("Rahul", 30, 50);
+		Employee_HashCode_Equals emp4 = new Employee_HashCode_Equals("Rohit", 10, 100);
+		List<Employee_HashCode_Equals> empList = Arrays.asList(emp1, emp2, emp3, emp4);
 		System.out.println(empList);
-		Set<Employee> empSet = new HashSet<>(empList);
+		Set<Employee_HashCode_Equals> empSet = new HashSet<>(empList);
 		System.out.println(empSet);
 	}
 
@@ -73,7 +73,7 @@ public class Employee {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Employee other = (Employee) obj;
+		Employee_HashCode_Equals other = (Employee_HashCode_Equals) obj;
 		if (empId == null) {
 			if (other.empId != null)
 				return false;

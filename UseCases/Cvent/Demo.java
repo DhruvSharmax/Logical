@@ -1,4 +1,4 @@
-package Cvent;
+package UseCases.Cvent;
 
 /*class Board {
 	Cell[][] matrix;

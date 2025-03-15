@@ -1,4 +1,4 @@
-package ING;
+package UseCases.ING;
 
 import java.util.*;
 

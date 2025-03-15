@@ -1,10 +1,12 @@
 package BackTracking;
 /*
- * https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
+ * https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/\
+ * input: abc
+ * output: abc, acb, bac, bca, cba, cab
  */
 public class AllPermutationsString {
 	public static void main(String[] args) {
-		printPermutaions("abcd");
+		printPermutaions("abc");
 	}
 
 	private static void printPermutaions(String s) {

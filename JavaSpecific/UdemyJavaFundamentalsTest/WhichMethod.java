@@ -1,4 +1,4 @@
-package JavaSpecific;
+package JavaSpecific.UdemyJavaFundamentalsTest;
 
 public class WhichMethod {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package HashCodeProblems;
+package JavaSpecific.HashCodeProblems;
 
 import java.util.HashMap;
 

@@ -3,26 +3,16 @@ package challenges.stringPlay;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class StringPlay {
+public class CountFrequency {
 	
 	public static void main(String[] args) {
-		String[] arr = {"AA", "AA","BB", "CC","DD"};
-		
-		eachElementWithStreamCounting(arr);		// with Stream API
-		eachElementWithStreamCounting("AAAABBCCDD");
-		eachElementCountWithFrequencyMethod(arr);
+		eachElementCount("AAAABBCCDD");
+		eachCharCount("AAAABBCCDD");
+		eachElementCountWithFrequencyMethod(new String[] {"AA", "AA","BB", "CC","DD"});
 		readNewsPaperToFindMaxFrequencyWord("sample news to prove that sample being used multiple sample places.");
-		printDuplicateElement(arr);
-		printUnique(arr);
 	}
 
-	private static void eachElementWithStreamCounting(String[] arr) {
-		Map<String, Long> m = Arrays.stream(arr)
-				.collect(Collectors
-						.groupingBy(x->x,Collectors.counting()));
-		System.out.println(m);
-	}
-	private  static void eachElementWithStreamCounting(String s) {
+	private static void eachElementCount(String s) {
 		var m = s.chars()
 				.mapToObj(c -> (char) c)
 				.collect(Collectors
@@ -30,14 +20,23 @@ public class StringPlay {
 		System.out.println(m);
 	}
 
+	private static void eachCharCount(String s) {
+		int[] freq = new int[256];
+		for(char c: s.toCharArray())
+			freq[c]++;
+
+		for(int i=0;i<256;i++)
+			if(freq[i]>0)
+				System.out.print( (char)i +"="+ freq[i] +", ");
+	}
+
 	private static void eachElementCountWithFrequencyMethod(String[] arr) {
 		List<String> li = Arrays.asList(arr);
-		Set<String> set = new HashSet<>();
-		set.addAll(li);
+        Set<String> set = new HashSet<>(li);
 		var m = set.stream()
 				.collect(Collectors
 						.toMap(x->x, x->Collections.frequency(li, x)));
-		System.out.println(m);
+		System.out.println("\n"+m);
 	}
 
 	//time comp: n+m where n is length of string and m in number of words
@@ -49,17 +48,5 @@ public class StringPlay {
 				.entrySet().stream()
 				.max(Map.Entry.comparingByValue()).get();
 		System.out.println(maxCountedWord.getKey()+ " appeared "+maxCountedWord.getValue()+" times");
-	}
-
-	private static void printDuplicateElement(String[] arr) {
-		Set<String> set = new HashSet<>();
-		List<String> li = Arrays.stream(arr).filter(x->!set.add(x)).collect(Collectors.toList());
-		System.out.println(li);
-	}
-	
-	private static void printUnique(String[] arr) {
-		Set<String> set = new HashSet<>();
-		set.addAll(Arrays.asList(arr));
-		System.out.println(set);
 	}
 }

@@ -1,4 +1,4 @@
-package HashCodeProblems;
+package JavaSpecific.HashCodeProblems;
 public class MyObj {
 		int id;
 		String s;

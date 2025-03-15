@@ -1,11 +1,11 @@
-package DynamicArray;
+package StandardStructures;
 
-public class Array {
+public class DynamicArray {
 
 	private int[] arr;
 	private int count;
 	
-	public Array(int i) {
+	public DynamicArray(int i) {
 		arr = new int[i];
 	}
 
@@ -31,7 +31,7 @@ public class Array {
 	}
 
 	public static void main(String[] args) {
-		Array ar = new Array(3);
+		DynamicArray ar = new DynamicArray(3);
 		ar.insert(5);
 		ar.insert(6);
 		ar.insert(7);
