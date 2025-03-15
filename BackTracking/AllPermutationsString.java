@@ -9,7 +9,7 @@ public class AllPermutationsString {
 		printPermutaions("abc");
 	}
 
-	private static void printPermutaions(String s) {
+	public static void printPermutaions(String s) {
 		recursive(s,0);
 	}
 
