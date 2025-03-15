@@ -4,7 +4,7 @@ package BackTracking;
  * input: abc
  * output: abc, acb, bac, bca, cba, cab
  */
-public class AllPermutationsString {
+public class AllCombinationsString {
 	public static void main(String[] args) {
 		printPermutaions("abc");
 	}
