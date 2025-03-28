@@ -1,38 +1,47 @@
 package challenges.stringPlay;
 
+import java.util.stream.IntStream;
+
 /*
  * https://www.geeksforgeeks.org/power-set/
  * input: abc
  * output: a, ab, abc, ac, b, bc, c
  */
 public class AllSubstrings {
-	static String s = "abc";
 	static int count=0;
 	public static void main(String[] args) {
-		powerSet(0,"");
-		//substrings(0,"");
-		//countSubstrings(0);
-		//System.out.println(count-1);
+		String s = "abc";
+
+		System.out.print("PowerSet: ");
+		powerSet(s,0,"");
+		System.out.println();
+		System.out.print("recursiveAndStreams: ");
+		recursiveAndStreams(s, 0,"");
+		System.out.println();
+
+		countCombinations(s, 0);
+		System.out.println("countCombinations: " + (count-1));
 	}
 
-	private static void powerSet(int i, String currStr) {	// complexity 2^n
+	static void powerSet(String s, int i, String currStr) {	// complexity 2^n
 		if(i==s.length()) {
-			System.out.println(currStr);
+			System.out.print(currStr+", ");
 			return;
 		}
-		powerSet(i+1, currStr);
-		powerSet(i+1, currStr + s.charAt(i));
+		powerSet(s, i+1, currStr);
+		powerSet(s, i+1, currStr+s.charAt(i));
 	}
 
-	private static void substrings(int start, String currStr) {		// complexity n * 2^n
-		System.out.println(currStr);
-		for (int i=start;i<s.length();i++)
-			substrings(i+1, currStr + s.charAt(i));
+	static void recursiveAndStreams(String s, int i, String currStr) {		// complexity n * 2^n
+		System.out.print(currStr+", ");
+		IntStream.range(i,s.length())
+				.forEach(index->
+		recursiveAndStreams(s, index+1, currStr+s.charAt(index)));
 	}
 
-	private static void countSubstrings(int start) {		// complexity 2^n
+	static void countCombinations(String s, int i) {		// complexity 2^n
 		count++;
-		for (int i=start;i<s.length();i++)
-			countSubstrings(i+1);
+		IntStream.range(i,s.length())
+				.forEach(index -> countCombinations(s,index+1));
 	}
 }

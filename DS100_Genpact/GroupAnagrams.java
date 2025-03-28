@@ -25,14 +25,15 @@ public class GroupAnagrams {
         }
         System.out.println(map);
 
-        Arrays.stream(strings)
+        map = Arrays.stream(strings)
                 .collect(Collectors.groupingBy(
                         x->x.chars()
                             .sorted()
                             .mapToObj(a -> String.valueOf((char) a))
                             .collect(Collectors.joining()),
                         LinkedHashMap::new,
-                        Collectors.toList()))
-                .entrySet().forEach(System.out::println);
+                        Collectors.toList()));
+        System.out.println(map);
+
     }
 }

@@ -11,7 +11,7 @@ public class BucketAlgoApp {
         User u = new User(1);
         var pool = Executors.newFixedThreadPool(12);
         for (int i=0;i<12;i++)
-            pool.submit(()->u.accessApp());
+            pool.submit(u::accessApp);
     }
 }
 
@@ -26,10 +26,7 @@ class LeakyBucket implements RateLimiter {
     }
     @Override
     public boolean isAcessible() {
-        if(queue.remainingCapacity()>0) {
-            return queue.add(1);
-        }
-        else return false;
+        return queue.add(1);
     }
 }
 
