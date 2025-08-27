@@ -83,7 +83,6 @@ public class ListOperations {
 		for(int i:list1) {
 			if(li.contains(sum-i))
 				System.out.println((sum-i)+":"+i);
-
 			li.add(i);
 		}
 	}

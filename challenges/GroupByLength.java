@@ -5,8 +5,10 @@ import java.util.stream.Collectors;
 
 public class GroupByLength {
     public static void main(String[] args) {
+        // key should be length of string and value should be count of that length
         var list = List.of("abc", "acb", "xyz", "abcd", "wxyz", "12345", "54321");
-        list.stream().collect(Collectors.groupingBy(x->x.length(), Collectors.toList()))
-                .forEach((k,v)->System.out.println(k+":"+v.size()));
+        var map = list.stream()
+                .collect(Collectors.groupingBy(String::length, Collectors.counting()));
+        System.out.println(map);
     }
 }

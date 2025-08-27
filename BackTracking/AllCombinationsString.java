@@ -13,15 +13,15 @@ public class AllCombinationsString {
 		recursive(s,0);
 	}
 
-	private static void recursive(String s, int index) {
-		if(index==s.length()) {
+	private static void recursive(String s, int i1) {
+		if(i1==s.length()) {			// base case to terminate recursion
 			System.out.println(s);
 			return;
 		}
-		for(int i = index; i < s.length(); i++) {
-			s = swap(s,index,i);
-			recursive(s, index+1);
-			s = swap(s,index,i);		// backtracking - to restore the original string
+		for(int i = i1; i < s.length(); i++) {
+			s = swap(s,i1,i);
+			recursive(s, i1+1);
+			s = swap(s,i1,i);		// backtracking - to restore the original string
 		}
 	}
 

@@ -12,13 +12,13 @@ public class AllCombinationsAddUpToSum {
         findCombinations(target,0);
     }
 
-    private static void findCombinations(int target, int statIndex) {
-        if(target==0){
+    private static void findCombinations(int target, int index) {
+        if(target==0) {
             System.out.println(li);
             return;
         }
-        for (var i=statIndex;i<arr.length;i++){
-            if(arr[i]<=target){
+        for (var i=index;i<arr.length;i++) {
+            if(arr[i]<=target) {
                 li.add(arr[i]);
                 findCombinations(target-arr[i],i+1);
                 li.removeLast();

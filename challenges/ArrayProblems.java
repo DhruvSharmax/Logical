@@ -44,16 +44,16 @@ public class ArrayProblems {
 		return count;
 	}
 	private static int[] findFirstAndLastPositionInSortedArray(int[] arr, int n) {
-		int start = -1,end = start;
+		int first = -1,last = -1;
 		for(int i=0;i<arr.length;i++) {
 			if(arr[i]==n) {
-				if(start==-1) {
-					start = i;
+				if(first==-1) {
+					first = i;
 				}
-				end = i;
+				last = i;
 			}
 		}
-		return new int[] {start,end};
+		return new int[] {first,last};
 	}
 
 	private static int[] findFirstAndLastPositionInSortedArrayBinarySearch(int[] arr, int n) {
@@ -109,7 +109,7 @@ public class ArrayProblems {
 	}
 
 	private static void convertArrayToListToArrayStreams(int[] arr) {
-		List<Integer> li = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		List<Integer> li = Arrays.stream(arr).boxed().toList();
 		
 		int[] out = li.stream().mapToInt(Integer::intValue).toArray();
 

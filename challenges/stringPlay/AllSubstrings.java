@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 public class AllSubstrings {
 	static int count=0;
 	public static void main(String[] args) {
-		String s = "abc";
+		String s = "abcd";
 
 		System.out.print("PowerSet: ");
 		powerSet(s,0,"");
@@ -42,6 +42,6 @@ public class AllSubstrings {
 	static void countCombinations(String s, int i) {		// complexity 2^n
 		count++;
 		IntStream.range(i,s.length())
-				.forEach(index -> countCombinations(s,index+1));
+				.forEach(i1 -> countCombinations(s,i1+1));
 	}
 }

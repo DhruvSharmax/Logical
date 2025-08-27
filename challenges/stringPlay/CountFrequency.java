@@ -6,10 +6,12 @@ import java.util.stream.Collectors;
 public class CountFrequency {
 	
 	public static void main(String[] args) {
-		eachElementCount("AAAABBCCDD");
-		eachCharCount("AAAABBCCDD");
-		eachElementCountWithFrequencyMethod(new String[] {"AA", "AA","BB", "CC","DD"});
-		readNewsPaperToFindMaxFrequencyWord("sample news to prove that sample being used multiple sample places.");
+		eachElementCount("AAAABBCCDD");		// op: {A=4, B=2, C=2, D=2}
+		eachCharCount("AAAABBCCDD");			// op: A=4, B=2, C=2, D=2
+		eachElementCountWithFrequencyMethod		// op: {AA=2, BB=1, CC=1, DD=1}
+				(new String[] {"AA", "AA","BB", "CC","DD"});
+		readNewsPaperToFindMaxFrequencyWord		// op: sample appeared 3 times
+				("sample news to prove that sample being used multiple sample places.");
 	}
 
 	private static void eachElementCount(String s) {
