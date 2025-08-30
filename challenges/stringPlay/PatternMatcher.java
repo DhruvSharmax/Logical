@@ -1,5 +1,7 @@
 package challenges.stringPlay;
-
+/*
+return first index of matching substring (pattern) from original string
+ */
 public class PatternMatcher {
     public static void main(String[] args) {
         String str = "xabcdey";
