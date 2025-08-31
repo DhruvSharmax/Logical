@@ -3,9 +3,8 @@ package takeyoufwd.basicmath;
 public class PrimeNumbers {
 	public static void main(String[] args) {
 		int num = 47;
-		printPrimes(num);
-		System.out.println();
 		checkPrime(17);
+		printPrimes(num);
 		//IntStream.range(2, num).forEach(i->IntStream.range(2, i/2).filter(j->i%j==0).forEach(System.out::print));
 	}
 
@@ -23,7 +22,7 @@ public class PrimeNumbers {
 		boolean flag;
 		for(int i = 2;i<=num;i++) {
 			flag = true;
-			for(int j = 2;j<=i/2;j++)
+			for(int j = 2;j<i/2;j++)
 				if(i%j==0) 
 					flag = false;
 			

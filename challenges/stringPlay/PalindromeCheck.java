@@ -15,9 +15,9 @@ public class PalindromeCheck {
 	}
 
 	static boolean checkPaliStream(String s) {
-		int length = s.length();
-		return IntStream.range(0, length /2)
-				.allMatch(i -> s.charAt(i)==s.charAt(length -1-i));
+		int n = s.length();
+		return IntStream.range(0, n /2)
+				.allMatch(i -> s.charAt(i)==s.charAt(n-i-1));
 	}
 
 	public static boolean checkPali(String s) {
