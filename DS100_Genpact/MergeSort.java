@@ -9,7 +9,7 @@ public class MergeSort {
         System.out.println("After sort:" + Arrays.toString(arr));
     }
 
-    static void divide(int[] arr) {
+   public static void divide(int[] arr) {
         int n = arr.length;
         if(n==1) return;
         var mid = n/2;
@@ -37,6 +37,5 @@ public class MergeSort {
             arr[k++] = leftArr[i++];
         while (j<rightArr.length)
             arr[k++] = rightArr[j++];
-
     }
 }

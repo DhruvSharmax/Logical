@@ -22,7 +22,7 @@ public class CountFrequency {
 		System.out.println(m);
 	}
 
-	private static void eachCharCount(String s) {
+	public static void eachCharCount(String s) {
 		int[] freq = new int[256];
 		for(char c: s.toCharArray())
 			freq[c]++;

@@ -14,7 +14,9 @@ public class ListOperations {
 		calculateSumStream(list,list1);
 		calculateSumThread(list,list1);
 		countOccurances(list);
-		findPairs(list1,10);
+		System.out.println();
+		findPairs(list1,6);
+		System.out.println();
 		finPairsOptimized(list1, 6);
 	}
 
@@ -57,22 +59,18 @@ public class ListOperations {
 
 			m.put(i, m.get(i)+1);
 		}
-
-		for(Map.Entry entry:m.entrySet())
-			System.out.println(entry.getKey()+":"+entry.getValue());
-
-		System.out.println("-----------------");
+		System.out.println(m);
 
 		Set<Integer> s = new HashSet<>(list);
 		for(int i:s)
-			System.out.println(i+":"+Collections.frequency(list, i));
+			System.out.print(i+"="+Collections.frequency(list, i)+", ");
 	}
 
 	public static void findPairs(List<Integer> list1,int sum) {
 		for(int i=0;i<list1.size();i++) {
 			for(int j=i+1;j<list1.size();j++) {
 				if(list1.get(i)+list1.get(j)==sum && i!=j) {
-					System.out.println(list1.get(i)+","+list1.get(j));
+					System.out.print(list1.get(i)+","+list1.get(j)+" and ");
 				}
 			}
 		}
@@ -82,7 +80,7 @@ public class ListOperations {
 		List<Integer> li = new ArrayList<>();
 		for(int i:list1) {
 			if(li.contains(sum-i))
-				System.out.println((sum-i)+":"+i);
+				System.out.print((sum-i)+","+i+" and ");
 			li.add(i);
 		}
 	}
